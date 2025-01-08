@@ -19,10 +19,12 @@ jobs:
 
       - name: Download resources from file
         run: |
-          # 从 links.conf 文件中读取链接并下载
+          # 从 links.conf 文件中读取链接并下载，忽略以 # 开头的注释行
           while IFS= read -r link; do
-            echo "Downloading $link"
-            wget "$link"  # 使用 wget 下载资源
+            # 忽略注释行
+            [[ "$link" =~ ^#.* ]] && continue
+            echo "Downloading link: $link"
+            wget "$link" # 使用 wget 下载资源
           done < links.conf
 
       - name: Upload to Qiniu
