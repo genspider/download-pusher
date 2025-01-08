@@ -1,7 +1,9 @@
 name: Download and Upload Resources
 
 on:
-  workflow_dispatch:  # 手动触发
+  push:
+    branches:
+      - main
 
 jobs:
   download-and-upload:
