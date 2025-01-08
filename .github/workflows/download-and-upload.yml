@@ -23,6 +23,7 @@ jobs:
           while IFS= read -r link; do
             # 忽略注释行
             [[ "$link" =~ ^#.* ]] && continue
+            [[ ! "$link" =~ ^http ]] && continue
             echo "Downloading link: $link"
             wget "$link" # 使用 wget 下载资源
           done < links.conf
