@@ -1,0 +1,9 @@
+{
+    "name": "download-and-upload-resources",
+    "version": "1.0.0",
+    "description": "Download resources from links and upload to Qiniu",
+    "main": "upload-to-qiniu.js",
+    "dependencies": {
+      "qiniu": "^7.12.1"
+    }
+  }
