@@ -34,9 +34,9 @@ function uploadFile(localFile, key) {
   });
 }
 
-// 从 links.txt 文件中读取链接并下载
+// 从 links.conf 文件中读取链接并下载
 function readLinksAndDownload() {
-  const links = fs.readFileSync('links.txt', 'utf-8')
+  const links = fs.readFileSync('links.conf', 'utf-8')
     .split('\n')
     .filter((line) => line.trim() && !line.startsWith('#'));  // 跳过注释行和空行
 

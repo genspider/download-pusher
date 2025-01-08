@@ -17,18 +17,18 @@ jobs:
         run: |
           npm install qiniu  # 安装七牛云 SDK
 
-      - name: Download resources from file
-        run: |
-          # 从 links.conf 文件中读取链接并下载，忽略以 # 开头的注释行
-          while IFS= read -r link; do
-            # 忽略注释行
-            [[ "$link" =~ ^#.* ]] && continue
-            [[ ! "$link" =~ ^http ]] && continue
-            echo "Downloading link: $link"
-            wget "$link" # 使用 wget 下载资源
-          done < links.conf
+      # - name: Download resources from file
+      #   run: |
+      #     # 从 links.conf 文件中读取链接并下载，忽略以 # 开头的注释行
+      #     while IFS= read -r link; do
+      #       # 忽略注释行
+      #       [[ "$link" =~ ^#.* ]] && continue
+      #       [[ ! "$link" =~ ^http ]] && continue
+      #       echo "Downloading link: $link"
+      #       wget "$link" # 使用 wget 下载资源
+      #     done < links.conf
 
-      - name: Upload to Qiniu
+      - name: Download resources and Upload to Qiniu
         run: |
           # 使用七牛云 SDK 上传资源
           node upload-to-qiniu.js  # 调用 Node.js 脚本上传
